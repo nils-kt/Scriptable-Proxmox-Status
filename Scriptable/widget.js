@@ -1,7 +1,7 @@
 // © 2021 Nils Kleinert
 // -- DON'T TOUCH ANY CODE HERE
 
-const version = "1.1.0"
+const version = "1.1.1"
 
 async function createWidget(filePath) {
     // Create our widget
