@@ -54,7 +54,7 @@ Very good, you can optionally adjust refresh. With the configuration you can def
 
 ## 🛠️ Client (Scriptable) configuration
 The configuration from the client is quite simple.   
-TAs a test, just try to open the server URL in the browser.  
+As a test, just try to open the server URL in the browser.  
 Get the current script for the widget like this: http://IP:PORT/scriptable  
 After paste the code in Scriptable, run the script.
 A message window will open  
