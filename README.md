@@ -17,7 +17,7 @@ The project is divided into two parts. The "Server" part and the "Scriptable" pa
 Actually self-explanatory. The server part takes care of the connection with Proxmox and reads the status of your virtual machines.  
 The scriptable part prepares this data and shows it to you.
 
-# ‍💻 Server configuration
+## ‍💻 Server configuration
 You don't have to change anything in the server's Javascript code.  
 You only have to adjust the following `config.json`. That's it.  
 And of course don't forget to start the server with `node main.js`.  
