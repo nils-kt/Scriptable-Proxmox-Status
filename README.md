@@ -1,6 +1,6 @@
 <div align="center">
 <img src="https://sharex.nilskleinert.de/widget.png" height="200px" />
-<h3 align="center">Easy Proxmox Servermonitoring</h3>
+<h3 align="center">Easy Proxmox Server Monitoring</h3>
 <h6 align="center">With Node.js and Scriptable (for iOS)</h6>
 </div>
 
