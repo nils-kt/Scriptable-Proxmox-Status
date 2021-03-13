@@ -1,9 +1,7 @@
 // © 2021 Nils Kleinert
+// -- DON'T TOUCH ANY CODE HERE
 
-const background = "1d1f2f" // HEX
 const version = "1.1.0"
-//// -- DON'T TOUCH ANY CODE HERE
-
 
 async function createWidget(filePath) {
     // Create our widget
@@ -135,7 +133,6 @@ function printUptime(seconds) {
 }
 
 let widget = await createWidget()
-widget.backgroundColor = new Color(background, 1)
 if (!config.runsInWidget) {
     await widget.presentMedium()
 }
