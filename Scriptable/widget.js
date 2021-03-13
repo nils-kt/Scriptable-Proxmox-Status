@@ -1,6 +1,7 @@
 // © 2021 Nils Kleinert
 
 const backend = "http://192.168.178.77:3000"
+const background = "1d1f2f" // HEX
 
 //// -- DON'T TOUCH ANY CODE HERE
 
@@ -84,7 +85,7 @@ function printUptime(seconds) {
 }
 
 let widget = await createWidget()
-widget.backgroundColor = new Color("1d1f2f")
+widget.backgroundColor = new Color(background, 1)
 if (!config.runsInWidget) {
     await widget.presentMedium()
 }

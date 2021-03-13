@@ -2,7 +2,7 @@ const config = require("./config.json"),
     proxmox = require("proxmox-client"),
     express = require("express"),
     app = express(),
-    fs = require('fs');
+    fs = require("fs");
 
 proxmox.auth(config.proxmox.hostname, config.proxmox.user, config.proxmox.token).then(() => {
 
@@ -48,12 +48,12 @@ proxmox.auth(config.proxmox.hostname, config.proxmox.user, config.proxmox.token)
         });
     }
 
-    app.get('/', (req, res) => {
+    app.get("/", (req, res) => {
         res.set("Content-Type", "application/json");
         res.send(JSON.stringify(allServers));
     })
 
-    app.get('/scriptable', (req, res) => {
+    app.get("/scriptable", (req, res) => {
         fs.readFile("../Scriptable/widget.js", "utf8", function (err, data) {
             if (err) throw err;
             res.set("Content-Type", "text/plain");
