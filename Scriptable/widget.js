@@ -1,23 +1,73 @@
 // © 2021 Nils Kleinert
 
-const backend = "http://192.168.178.77:3000"
 const background = "1d1f2f" // HEX
-
+const version = "1.1.0"
 //// -- DON'T TOUCH ANY CODE HERE
 
 
-async function createWidget() {
+async function createWidget(filePath) {
     // Create our widget
 
-    let data, header, entry
+    let data, header, entry, backend, ready, fileManager
     const list = new ListWidget()
 
-    // Get our servers
-    data = await new Request(backend).loadJSON()
+    // Check for update
+    data = await new Request("https://api.github.com/repos/nils-kt/Scriptable-Proxmox-Status/releases").loadJSON()
+
+    if(data[0].tag_name !== version) {
+        if (!config.runsInWidget) {
+            let alert = new Alert()
+            alert.title = "Update " + data[0].tag_name
+            alert.message = data[0].body
+            alert.addCancelAction("Abbrechen")
+            alert.addAction("Zu GitHub")
+            let res = await alert.presentAlert()
+            if (res === 0) {
+                await Safari.openInApp("https://github.com/nils-kt/Scriptable-Proxmox-Status/releases", false)
+            }
+        } else {
+            showNotification("Update verfügbar!", "Dein Serverstatus Widget hat ein Update " + data[0].tag_name)
+        }
+    }
+
+    // Get saved data
+    fileManager = FileManager.iCloud()
+    if (!fileManager.fileExists(fileManager.joinPath(fileManager.documentsDirectory(), "proxmox_monitoring.cfg"))) {
+        if (!config.runsInWidget) {
+            let alert = new Alert()
+            alert.title = "Konfiguration notwendig"
+            alert.message = "Bitte trage die Backend-URL ein"
+            alert.addTextField("http://test.tld:3000")
+            alert.addCancelAction("Abbrechen")
+            alert.addAction("Speichern")
+            let res = await alert.presentAlert()
+            if (res === 0) {
+                let value = alert.textFieldValue(0)
+                backend = value
+                fileManager.writeString(fileManager.joinPath(fileManager.documentsDirectory(), "proxmox_monitoring.cfg"), value)
+                ready = true
+            } else {
+                ready = false
+            }
+        }
+    } else {
+        backend = fileManager.readString(fileManager.joinPath(fileManager.documentsDirectory(), "proxmox_monitoring.cfg"));
+        ready = true
+    }
+
+    if(!ready) {
+        let entry = list.addText("Serverstatus Widget nicht konfiguriert. Bitte öffne Scriptable um das Widget zu konfigurieren.")
+        entry.textColor = Color.red()
+        entry.centerAlignText()
+        return list
+    }
 
     header = list.addText("ℹ️\tServerstatus ".toUpperCase())
     header.centerAlignText()
     header.font = Font.boldSystemFont(14)
+
+    // Get our servers
+    data = await new Request(backend).loadJSON()
 
     for (let i = 0; i < data.length; i++) {
         if (data[i].type === "vm") {
@@ -58,10 +108,10 @@ async function createWidget() {
     return list
 }
 
-function showNotification(title, subtitle, sound = "default") {
+function showNotification(title, body, sound = "default") {
     let notification = new Notification()
-    notification.title = tile
-    notification.subtitle = subtitle
+    notification.title = title
+    notification.body = body
     notification.sound = sound
     notification.schedule(0)
 }

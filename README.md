@@ -53,7 +53,11 @@ Remember that this port should be reachable from the outside, so that the widget
 Very good, you can optionally adjust refresh. With the configuration you can define how often the server refreshes the state of your virtual machines (seconds).
 
 ## 🛠️ Client (Scriptable) configuration
-The configuration from the client is quite simple.  
-In `widget.js` you only need to set the URL from the backend (our Node.js server).  
-That was it. As a test, just try to open the server URL in the browser.  
-You can get the current script for the widget like this: http://IP:PORT/scriptable
+The configuration from the client is quite simple.   
+TAs a test, just try to open the server URL in the browser.  
+Get the current script for the widget like this: http://IP:PORT/scriptable  
+After paste the code in Scriptable, run the script.
+A message window will open  
+where you have to enter the address of your server once (http://IP:PORT) and then you are ready to go!
+
+**Not quite understood yet? No problem! We have prepared a video for you: [streamable.com/bhq3ik](https://streamable.com/bhq3ik)**
