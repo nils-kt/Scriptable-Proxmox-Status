@@ -1,15 +1,5 @@
-<div align="center">
-<img src="https://sharex.nilskleinert.de/widget.png" height="200px" />
 <h3 align="center">Easy Proxmox Server Monitoring</h3>
 <h6 align="center">With Node.js and Scriptable (for iOS)</h6>
-</div>
-
-
-## 🗂 Table of Contents
-
-* [How it works](#-how-it-works)
-* [Server configuration](#-server-configuration)
-* [Client (Scriptable) configuration](#-client-scriptable-configuration)
 
 
 ## 🤔 How it works
