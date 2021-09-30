@@ -40,7 +40,7 @@ Let's continue with the configuration for the web server.
 At Port you enter any port under which our server should be reachable later.  
 Remember that this port should be reachable from the outside, so that the widget works.
 
-Very good, you can optionally adjust refresh. With the configuration you can define how often the server refreshes the state of your virtual machines (seconds).
+Very good, you can optionally adjust refresh. With the configuration you can define how often the server refreshes the state of your virtual machines (milliseconds).
 
 ## 🛠️ Client (Scriptable) configuration
 The configuration from the client is quite simple.   
